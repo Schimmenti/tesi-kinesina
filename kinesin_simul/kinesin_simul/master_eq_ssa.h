@@ -75,3 +75,21 @@ int first_reaction(double* rates, int n, double escapeRate, double &wTime)
 	}
 	return move;
 }
+double mean_velocity(int* x, double* t, int n)
+{
+	double v = 0;
+	for (int i = 1; i < n; i++)
+	{
+		v += (double)(x[i] - x[i - 1]) / (t[i] - t[i - 1]);
+	}
+	return v / (n - 1);
+}
+double mean(double* v, int n)
+{
+	double m = 0;
+	for (int i = 0; i < n; i++)
+	{
+		m += v[i];
+	}
+	return m / n;
+}
