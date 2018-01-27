@@ -25,6 +25,21 @@ double* create_discr_cdf(double* p_i, int n)
 	}
 	return cdf;
 }
+double* create_discr_cdf(double* rates, int n, double &sum)
+{
+	sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += rates[i];
+	}
+	double* cdf = new double[n];
+	cdf[0] = rates[0] / sum;
+	for (int i = 0; i < n; i++)
+	{
+		cdf[i] = cdf[i - 1] + rates[i] / sum;
+	}
+	return cdf;
+}
 int sample_discr_cdf(double* cdf, int n, double u)
 {
 	for (int i = 0; i < n; i++)
