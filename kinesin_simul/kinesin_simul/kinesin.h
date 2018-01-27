@@ -61,3 +61,5 @@ double get_ba_rate(bool right, bool produceAtp, double dMu, double f)
 		return OMEGA_RATE * exp(-FF_B_MINUS * f); //for negative f highers BA-L
 	}
 }
+
+

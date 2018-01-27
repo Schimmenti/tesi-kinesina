@@ -35,3 +35,24 @@ int sample_discr_cdf(double* cdf, int n, double u)
 		}
 	}
 }
+int first_reaction(double* rates, int n, double escapeRate, double &wTime)
+{
+	double u = uniform_sample();
+	wTime = exp_cdf_inv(u, 1 / escapeRate);
+	//compute the waiting time for the first reaction to occur
+	u = uniform_sample();
+	double minTime = exp_cdf_inv(u, 1 / rates[0]);
+	int move = 0;
+	for (int i = 1; i < n; i++)
+	{
+		//if the waiting time for the i^th move is more than minTime ignore it
+		u = uniform_sample();
+		double t_i = exp_cdf_inv(u, 1 / rates[i]);
+		if (t_i < minTime)
+		{
+			minTime = t_i;
+			move = i;
+		}
+	}
+	return move;
+}
