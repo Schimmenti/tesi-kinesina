@@ -10,11 +10,14 @@ double uniform_sample(int seed)
 	srand(seed);
 	return (double)rand() / RAND_MAX;
 }
-double uniform_sample()
+double uniform_sample_init()
 {
 	return uniform_sample(time(NULL));
 }
-
+double uniform_sample()
+{
+	return (double)rand() / RAND_MAX;
+}
 double* create_discr_cdf(double* p_i, int n)
 {
 	double* cdf = new double[n];
@@ -34,9 +37,9 @@ double* create_discr_cdf(double* rates, int n, double &sum)
 	}
 	double* cdf = new double[n];
 	cdf[0] = rates[0] / sum;
-	for (int i = 0; i < n; i++)
+	for (int i = 1; i < n; i++)
 	{
-		cdf[i] = cdf[i - 1] + rates[i] / sum;
+		cdf[i] = cdf[i - 1] + (rates[i] / sum);
 	}
 	return cdf;
 }
@@ -49,6 +52,7 @@ int sample_discr_cdf(double* cdf, int n, double u)
 			return i;
 		}
 	}
+	
 }
 int first_reaction(double* rates, int n, double escapeRate, double &wTime)
 {
