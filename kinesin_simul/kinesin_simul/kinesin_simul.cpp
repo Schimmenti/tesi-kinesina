@@ -8,7 +8,7 @@
 using namespace std;
 int main()
 {
-	int epochs = 20000;
+	int epochs = 1000;
 	double* v_i = new double[epochs];
 	double* r_i = new double[epochs];
 
@@ -160,7 +160,7 @@ int main()
 	cout << "\n\r";
 	cout << mr;
 	cout << "\n\r";
-	cout << (-mv*f) / (mr*dmu);
+	cout << (-mv*f) / (mr*dmu*d);
 	system("PAUSE");
 	main();
     return 0;
