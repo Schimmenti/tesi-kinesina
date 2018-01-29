@@ -138,6 +138,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="compmeth.h" />
     <ClInclude Include="kinesin.h" />
     <ClInclude Include="master_eq_ssa.h" />
     <ClInclude Include="stdafx.h" />
